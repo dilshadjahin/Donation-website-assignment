@@ -11,6 +11,7 @@ import Root from './Components/Root/Root';
 import Home from './Components/Home/Home';
 import Description from './Components/Description/Description';
 import Donate from './Components/Donate/Donate';
+import Statistics from './Components/Statistics/Statistics';
 
 const router = createBrowserRouter([
   {
@@ -19,8 +20,17 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element:<Home></Home>
-      },
+        element:<Home></Home>},
+        
+          {
+            path: '/donation',
+            element: <Donate></Donate>
+
+        },
+        {
+          path: '/statistics',
+          element: <Statistics></Statistics>
+        },
       {path: '/donate',
       element: <Donate/>,
       loader: ()=> fetch('/catagory.json')

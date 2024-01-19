@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Cards from "../Cards/Cards";
 
 
-const Catagory = () => {
+const Catagory = ({ search }) => {
 
     const [catagory, setCatagory] = useState([]);
 
@@ -17,22 +17,33 @@ const Catagory = () => {
 
             <div className="grid grid-cols-4 gap-2 mb-6">
                 {
-                    catagory.map((card,idx) => (
-                    <Cards key={idx} card={card} />))
+                    catagory.filter((item) => {
+                        return search?.toLowerCase() === '' || item.title.toLowerCase().includes(search.toLowerCase());
+                    })
+                        .map((card) => (
+                            <Cards key={card.id} card={card} />))
                 }
 
             </div>
             <div className="flex flex-row-reverse gap-3 mb-6">
                 {
-                    catagory.map((card) => (
-                    <Cards key={card.id} card={card} />))
+
+                    catagory.filter((item) => {
+                        return search?.toLowerCase() === '' || item.title.toLowerCase().includes(search.toLowerCase());
+                    })
+                        .map((card) => (
+                            <Cards key={card.id} card={card} />))
                 }
 
             </div>
             <div className="grid grid-cols-4 gap-2  ">
                 {
-                    catagory.map((card) => (
-                    <Cards key={card.id} card={card} />))
+
+                    catagory.filter((item) => {
+                        return search?.toLowerCase() === '' || item.title.toLowerCase().includes(search.toLowerCase());
+                    })
+                        .map((card) => (
+                            <Cards key={card.id} card={card} />))
                 }
 
             </div>
